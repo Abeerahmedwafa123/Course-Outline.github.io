@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Business Result Starter – Course Outline & Syllabus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    /* -------- GLOBAL STYLES -------- */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: radial-gradient(circle at top left, #1e5a46 0%, #02140e 35%, #010605 100%);
+      color: #f5f5f5;
+      min-height: 100vh;
+      padding: 24px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .page-wrapper {
+      max-width: 1100px;
+      width: 100%;
+      background: linear-gradient(135deg, #071a13, #04120d);
+      border-radius: 16px;
+      box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.7),
+        0 18px 32px rgba(0, 0, 0, 0.85),
+        0 -2px 12px rgba(0, 0, 0, 0.5);
+      padding: 28px 22px 32px;
+      border: 1px solid rgba(165, 214, 167, 0.08);
+      backdrop-filter: blur(4px);
+    }
+
+    @media (min-width: 768px) {
+      .page-wrapper {
+        padding: 32px 38px 40px;
+      }
+    }
+
+    /* -------- HEADER -------- */
+    .header {
+      margin-bottom: 26px;
+    }
+
+    .header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .logo-left,
+    .logo-right {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-left img,
+    .logo-right img {
+      max-height: 54px;
+      width: auto;
+      filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.6));
+    }
+
+    .course-tag {
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      background: linear-gradient(135deg, #8bc34a, #a5d6a7);
+      color: #02140e;
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.15),
+                  0 4px 10px rgba(0, 0, 0, 0.6);
+      text-align: center;
+    }
+
+    .header-text {
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 4px;
+      background: linear-gradient(90deg, #e8f5e9 0%, #b2ff59 40%, #c8e6c9 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 12px rgba(178, 255, 89, 0.4);
+    }
+
+    .subtitle {
+      font-size: 0.95rem;
+      color: #cfd8dc;
+      opacity: 0.8;
+    }
+
+    /* -------- ACCORDION / COLLAPSIBLES -------- */
+
+    .accordion-container {
+      margin-top: 26px;
+    }
+
+    .accordion {
+      width: 100%;
+      text-align: left;
+      padding: 14px 18px;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      margin-bottom: 8px;
+      border-radius: 10px;
+
+      background-image:
+        linear-gradient(135deg, rgba(224, 242, 241, 0.06), rgba(0, 0, 0, 0.3)),
+        linear-gradient(135deg, #00c853, #a5d6a7);
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
+
+      color: #e8f5e9;
+      font-size: 0.98rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow:
+        0 0 0 1px rgba(200, 230, 201, 0.2),
+        0 10px 18px rgba(0, 0, 0, 0.7);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.3s ease, opacity 0.15s ease;
+    }
+
+    .accordion:hover {
+      transform: translateY(-1px);
+      box-shadow:
+        0 0 0 1px rgba(200, 230, 201, 0.6),
+        0 14px 26px rgba(0, 0, 0, 0.85);
+    }
+
+    .accordion-title {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .accordion-badge {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 2px 9px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.4);
+      color: #c8e6c9;
+    }
+
+    .accordion-label {
+      font-size: 0.98rem;
+    }
+
+    .accordion-icon {
+      font-size: 1.2rem;
+      opacity: 0.86;
+      transition: transform 0.2s ease, opacity 0.15s ease;
+    }
+
+    .accordion.active .accordion-icon {
+      transform: rotate(90deg);
+      opacity: 1;
+    }
+
+    .accordion.active {
+      background-image:
+        linear-gradient(135deg, rgba(236, 253, 245, 0.18), rgba(0, 0, 0, 0.4)),
+        linear-gradient(135deg, #1b5e20, #00e676);
+    }
+
+    .panel {
+      background: radial-gradient(circle at top left, rgba(0, 230, 118, 0.16), rgba(0, 0, 0, 0.95));
+      color: #e0f2f1;
+      border-radius: 0 0 12px 12px;
+      margin: -6px 2px 10px;
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.25s ease-out, opacity 0.25s ease-out, transform 0.25s ease-out;
+      opacity: 0;
+      transform: translateY(-4px);
+      box-shadow:
+        0 0 0 1px rgba(165, 214, 167, 0.3),
+        0 14px 30px rgba(0, 0, 0, 0.8);
+    }
+
+    .panel-content {
+      padding: 14px 18px 18px;
+      font-size: 0.93rem;
+      line-height: 1.55;
+    }
+
+    .panel.open {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* -------- TYPOGRAPHY -------- */
+    h2 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      color: #e8f5e9;
+    }
+
+    h3 {
+      font-size: 1rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      color: #c8e6c9;
+    }
+
+    p {
+      margin-bottom: 6px;
+      color: #e0f2f1;
+    }
+
+    ul {
+      margin: 6px 0 6px 18px;
+    }
+
+    li {
+      margin-bottom: 4px;
+    }
+
+    .muted {
+      opacity: 0.85;
+      font-size: 0.9rem;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(200, 230, 201, 0.4);
+      font-size: 0.8rem;
+      margin-right: 6px;
+      margin-bottom: 4px;
+    }
+
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(200, 230, 201, 0.6), transparent);
+      margin: 12px 0;
+    }
+
+    /* WEEK GRID */
+    .week-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .week-card {
+      border-radius: 10px;
+      padding: 10px 12px;
+      background: linear-gradient(145deg, rgba(0, 0, 0, 0.7), rgba(0, 77, 64, 0.6));
+      box-shadow: 0 0 0 1px rgba(129, 199, 132, 0.4);
+    }
+
+    .week-card h3 {
+      margin-bottom: 6px;
+      font-size: 0.98rem;
+    }
+
+    .session-title {
+      font-weight: 600;
+      margin-top: 4px;
+      margin-bottom: 3px;
+      color: #dcedc8;
+    }
+
+    .footer-note {
+      margin-top: 20px;
+      font-size: 0.82rem;
+      text-align: center;
+      color: #b0bec5;
+      opacity: 0.75;
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+  <header class="header">
+    <div class="header-row">
+      <div class="logo-left">
+        <img src="https://github.com/Abeerahmedwafa123/Mental-Math-/blob/main/Edu%20Logo%20White.png?raw=1"
+             alt="Edulixa Logo">
+      </div>
+      <div class="logo-right">
+        <img src="https://github.com/Abeerahmedwafa123/Mental-Math-/blob/main/Monglish%20logo%20White.png?raw=1"
+             alt="Monglish Logo">
+      </div>
+    </div>
+
+    <div class="header-text">
+      <div class="course-tag">Business English · Beginner</div>
+      <h1>Business Result Starter – Course Outline & Syllabus</h1>
+      <p class="subtitle">
+        Complete overview, unit-by-unit syllabus, and a 2-sessions-per-week teaching plan.
+      </p>
+    </div>
+  </header>
+
+  <main class="accordion-container">
+
+    <!-- PANEL 1: Course Overview -->
+    <button class="accordion">
+      <span class="accordion-title">
+        <span class="accordion-badge">Overview</span>
+        <span class="accordion-label">Course Description & Objectives</span>
+      </span>
+      <span class="accordion-icon">&#9656;</span>
+    </button>
+    <div class="panel">
+      <div class="panel-content">
+        <h2>Course Description</h2>
+        <p>
+          This course is based on <strong>Business Result Second Edition – Starter</strong>. It introduces learners
+          to the essential communication skills they need in modern international workplaces.
+          The syllabus is communication-driven and focuses on <strong>real business tasks</strong>:
+          introductions, talking about work and companies, handling simple phone calls and emails,
+          and describing products, departments, technology, and travel.
+        </p>
+
+        <div class="section-divider"></div>
+
+        <h2>Course Duration & Structure</h2>
+        <p>
+          <span class="pill">8 Units</span>
+          <span class="pill">Approx. 32 contact hours</span>
+          <span class="pill">2 sessions per week</span>
+          <span class="pill">~16 weeks total</span>
+        </p>
+
+        <p class="muted">
+          Each unit provides around four hours of classroom material, plus additional practice through
+          Practice Files, Online Practice, and revision tasks.
+        </p>
+
+        <div class="section-divider"></div>
+
+        <h2>Learning Objectives</h2>
+        <p>By the end of the course, students will be able to:</p>
+        <ul>
+          <li>Introduce themselves and colleagues professionally.</li>
+          <li>Talk about companies, departments, workplaces, and products.</li>
+          <li>Use basic grammar accurately (forms of <em>to be</em>, simple present, Wh- questions).</li>
+          <li>Spell names, say numbers, and give phone, email, and website information.</li>
+          <li>Handle basic phone calls and write simple business emails.</li>
+          <li>Participate in short, realistic business conversations and role-plays.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PANEL 2: Unit-by-Unit Syllabus -->
+    <button class="accordion">
+      <span class="accordion-title">
+        <span class="accordion-badge">Syllabus</span>
+        <span class="accordion-label">Unit-by-Unit Breakdown</span>
+      </span>
+      <span class="accordion-icon">&#9656;</span>
+    </button>
+    <div class="panel">
+      <div class="panel-content">
+        <h2>Unit 1 – You</h2>
+        <h3>Focus</h3>
+        <ul>
+          <li>Introducing yourself.</li>
+          <li>Talking about jobs and job titles.</li>
+          <li>Asking about names and jobs.</li>
+          <li>Alphabet and spelling names.</li>
+          <li>Meeting people in business contexts.</li>
+        </ul>
+        <h3>Language</h3>
+        <ul>
+          <li><strong>Grammar:</strong> <em>to be</em> (I / you) – affirmative, negative, questions.</li>
+          <li><strong>Business communication:</strong> greetings, first meetings, introductions, goodbyes.</li>
+        </ul>
+
+        <div class="section-divider"></div>
+
+        <h2>Unit 2 – Company</h2>
+        <h3>Focus</h3>
+        <ul>
+          <li>Talking about companies and countries.</li>
+          <li>Head offices, locations, where people work.</li>
+          <li>Saying numbers 0–9.</li>
+          <li>Starting and answering a phone call.</li>
+        </ul>
+        <h3>Language</h3>
+        <ul>
+          <li><strong>Grammar:</strong> <em>to be</em> (he / she / it) – affirmative, negative, questions.</li>
+          <li><strong>Business communication:</strong> answering the phone, asking for someone, polite requests.</li>
+        </ul>
+
+        <div class="section-divider"></div>
+
+        <h2>Unit 3 – Workplace</h2>
+        <h3>Focus</h3>
+        <ul>
+          <li>Describing your company and workplace.</li>
+          <li>Vocabulary: reception, office, warehouse, factory, cafeteria, car park.</li>
+          <li>Adjectives: big, small, old, new, good, etc.</li>
+          <li>Email and website addresses.</li>
+          <li>Emailing a simple request.</li>
+        </ul>
+        <h3>Language</h3>
+        <ul>
+          <li><strong>Grammar:</strong> <em>to be</em> (we / they) + Wh- questions (What / Where / Who).</li>
+          <li><strong>Business communication:</strong> structure of simple business emails, basic phrases.</li>
+        </ul>
+
+        <div class="section-divider"></div>
+
+        <h2>Unit 4 – Departments</h2>
+        <h3>Focus</h3>
+        <ul>
+          <li>Company departments and internal structure.</li>
+          <li>Daily tasks and responsibilities.</li>
+        </ul>
+        <h3>Language</h3>
+        <ul>
+          <li><strong>Grammar:</strong> Present simple for routines (basic forms).</li>
+          <li><strong>Business communication:</strong> talking about job roles, asking about responsibilities.</li>
+        </ul>
+
+        <div class="section-divider"></div>
+
+        <h2>Viewpoint 1 – People in Business</h2>
+        <p>
+          Video-based lesson linked to Units 1–4: authentic interviews and case studies about people in business.
+          Focus on listening, note-taking, and discussion.
+        </p>
+
+        <div class="section-divider"></div>
+
+        <h2>Unit 5 – Products</h2>
+        <h3>Focus</h3>
+        <ul>
+          <li>Describing products, features, and quality.</li>
+          <li>Talking about size, function, and type.</li>
+        </ul>
+        <h3>Language</h3>
+        <ul>
+          <li><strong>Grammar:</strong> this / that / these / those; basic countable/uncountable use.</li>
+          <li><strong>Business communication:</strong> asking for and giving product information.</li>
+        </ul>
+
+        <div class="section-divider"></div>
+
+        <h2>Unit 6 – Entertaining</h2>
+        <h3>Focus</h3>
+        <ul>
+          <li>Inviting and entertaining clients.</li>
+          <li>Talking about food, restaurants, and social activities.</li>
+          <li>Accepting and declining invitations.</li>
+        </ul>
+        <h3>Language</h3>
+        <ul>
+          <li><strong>Grammar (functional):</strong> modal <em>can</em> for polite requests and offers.</li>
+          <li><strong>Business communication:</strong> arranging social events, polite responses.</li>
+        </ul>
+
+        <div class="section-divider"></div>
+
+        <h2>Unit 7 – Technology</h2>
+        <h3>Focus</h3>
+        <ul>
+          <li>Office technology and devices.</li>
+          <li>Talking about technical problems.</li>
+          <li>Giving simple instructions.</li>
+        </ul>
+        <h3>Language</h3>
+        <ul>
+          <li><strong>Grammar:</strong> have / has; imperatives for instructions.</li>
+          <li><strong>Business communication:</strong> reporting a problem, explaining what to do.</li>
+        </ul>
+
+        <div class="section-divider"></div>
+
+        <h2>Unit 8 – Travel</h2>
+        <h3>Focus</h3>
+        <ul>
+          <li>Travel arrangements and timetables.</li>
+          <li>Flight numbers, times, and prices.</li>
+          <li>Booking and confirming travel.</li>
+        </ul>
+        <h3>Language</h3>
+        <ul>
+          <li><strong>Grammar:</strong> present simple for timetables; time expressions.</li>
+          <li><strong>Business communication:</strong> asking for and giving travel information.</li>
+        </ul>
+
+        <div class="section-divider"></div>
+
+        <h2>Viewpoint 2 – Describing Businesses</h2>
+        <p>
+          Video-based lesson linked to Units 5–8. Students watch case studies and practise describing
+          companies, products, and services.
+        </p>
+      </div>
+    </div>
+
+    <!-- PANEL 3: Weekly Teaching Plan -->
+    <button class="accordion">
+      <span class="accordion-title">
+        <span class="accordion-badge">Planning</span>
+        <span class="accordion-label">2-Sessions-per-Week Teaching Plan</span>
+      </span>
+      <span class="accordion-icon">&#9656;</span>
+    </button>
+    <div class="panel">
+      <div class="panel-content">
+        <h2>Structure</h2>
+        <p>
+          This plan assumes <strong>2 sessions per week</strong>, each around <strong>90 minutes</strong>.
+          Each unit takes about 4 sessions, including practice and revision.
+        </p>
+
+        <div class="week-grid">
+
+          <!-- Week 1 -->
+          <div class="week-card">
+            <h3>Week 1 – Unit 1 (Part 1)</h3>
+            <p class="session-title">Session 1</p>
+            <ul>
+              <li>Starting Point: names and basic introductions.</li>
+              <li>Working with Words: jobs & job titles.</li>
+              <li>Pronunciation: word stress in job titles.</li>
+            </ul>
+            <p class="session-title">Session 2</p>
+            <ul>
+              <li>Language at Work: <em>to be</em> (I/you) – forms & questions.</li>
+              <li>Practically Speaking: alphabet and spelling names.</li>
+              <li>Business Communication: greetings, meeting people.</li>
+            </ul>
+          </div>
+
+          <!-- Week 2 -->
+          <div class="week-card">
+            <h3>Week 2 – Unit 1 (Part 2) & Unit 2 Start</h3>
+            <p class="session-title">Session 3</p>
+            <ul>
+              <li>Unit 1: conversation practice using names & jobs.</li>
+              <li>Talking Point: conference role-play (introductions).</li>
+            </ul>
+            <p class="session-title">Session 4</p>
+            <ul>
+              <li>Unit 2 Working with Words: companies & countries, head office.</li>
+              <li>Listening: business cards & company information.</li>
+            </ul>
+          </div>
+
+          <!-- Week 3 -->
+          <div class="week-card">
+            <h3>Week 3 – Unit 2 (Part 2)</h3>
+            <p class="session-title">Session 5</p>
+            <ul>
+              <li>Language at Work: <em>to be</em> (he/she/it).</li>
+              <li>Practically Speaking: numbers 0–9, phone digits.</li>
+              <li>Listening: phone numbers and passcodes.</li>
+            </ul>
+            <p class="session-title">Session 6</p>
+            <ul>
+              <li>Business Communication: starting phone calls, asking for people.</li>
+              <li>Talking Point: Company game (recycling Unit 2 language).</li>
+            </ul>
+          </div>
+
+          <!-- Week 4 -->
+          <div class="week-card">
+            <h3>Week 4 – Unit 3 (Part 1)</h3>
+            <p class="session-title">Session 7</p>
+            <ul>
+              <li>Working with Words: workplace locations (office, reception, factory, etc.).</li>
+              <li>Adjectives: old, new, big, small, good.</li>
+            </ul>
+            <p class="session-title">Session 8</p>
+            <ul>
+              <li>Language at Work: <em>to be</em> (we/they), Wh- questions (What/Where/Who).</li>
+              <li>Practice: describing workplaces and people.</li>
+            </ul>
+          </div>
+
+          <!-- Week 5 -->
+          <div class="week-card">
+            <h3>Week 5 – Unit 3 (Part 2)</h3>
+            <p class="session-title">Session 9</p>
+            <ul>
+              <li>Practically Speaking: email and website addresses.</li>
+              <li>Listening: spelling and repeating details.</li>
+            </ul>
+            <p class="session-title">Session 10</p>
+            <ul>
+              <li>Business Communication: writing simple request emails.</li>
+              <li>Talking Point: question-and-answer practice about workplace.</li>
+              <li>Short review of Units 1–3.</li>
+            </ul>
+          </div>
+
+          <!-- Week 6 -->
+          <div class="week-card">
+            <h3>Week 6 – Unit 4 (Part 1)</h3>
+            <p class="session-title">Session 11</p>
+            <ul>
+              <li>Working with Words: departments and company structure.</li>
+              <li>Vocabulary: HR, Finance, IT, etc.</li>
+            </ul>
+            <p class="session-title">Session 12</p>
+            <ul>
+              <li>Language at Work: present simple (basic routines).</li>
+              <li>Speaking: talking about departmental tasks.</li>
+            </ul>
+          </div>
+
+          <!-- Week 7 -->
+          <div class="week-card">
+            <h3>Week 7 – Unit 4 (Part 2) & Viewpoint 1</h3>
+            <p class="session-title">Session 13</p>
+            <ul>
+              <li>Business Communication: describing job roles & responsibilities.</li>
+              <li>Role-plays: Who does what?</li>
+            </ul>
+            <p class="session-title">Session 14</p>
+            <ul>
+              <li>Viewpoint 1 – People in Business video lesson.</li>
+              <li>Listening, note-taking, and discussion activities.</li>
+            </ul>
+          </div>
+
+          <!-- Week 8 -->
+          <div class="week-card">
+            <h3>Week 8 – Unit 5 (Part 1)</h3>
+            <p class="session-title">Session 15</p>
+            <ul>
+              <li>Working with Words: products and features.</li>
+              <li>Grammar: this / that / these / those.</li>
+            </ul>
+            <p class="session-title">Session 16</p>
+            <ul>
+              <li>Practice: describing simple products.</li>
+              <li>Controlled dialogues using demonstratives.</li>
+            </ul>
+          </div>
+
+          <!-- Week 9 -->
+          <div class="week-card">
+            <h3>Week 9 – Unit 5 (Part 2) & Unit 6 Start</h3>
+            <p class="session-title">Session 17</p>
+            <ul>
+              <li>Business Communication: asking for and giving product information.</li>
+              <li>Speaking: short product presentations.</li>
+            </ul>
+            <p class="session-title">Session 18</p>
+            <ul>
+              <li>Unit 6 Working with Words: food, restaurants, and social activities.</li>
+              <li>Invitations vocabulary.</li>
+            </ul>
+          </div>
+
+          <!-- Week 10 -->
+          <div class="week-card">
+            <h3>Week 10 – Unit 6 (Part 2)</h3>
+            <p class="session-title">Session 19</p>
+            <ul>
+              <li>Business Communication: inviting, accepting, declining.</li>
+              <li>Role-plays: client dinners, social events.</li>
+            </ul>
+            <p class="session-title">Session 20</p>
+            <ul>
+              <li>Arranging meetings and social plans.</li>
+              <li>Mini review of Units 4–6.</li>
+            </ul>
+          </div>
+
+          <!-- Week 11 -->
+          <div class="week-card">
+            <h3>Week 11 – Unit 7 (Part 1)</h3>
+            <p class="session-title">Session 21</p>
+            <ul>
+              <li>Working with Words: office technology and devices.</li>
+            </ul>
+            <p class="session-title">Session 22</p>
+            <ul>
+              <li>Language at Work: have / has; imperatives (instructions).</li>
+              <li>Practising basic technical instructions.</li>
+            </ul>
+          </div>
+
+          <!-- Week 12 -->
+          <div class="week-card">
+            <h3>Week 12 – Unit 7 (Part 2) & Unit 8 Start</h3>
+            <p class="session-title">Session 23</p>
+            <ul>
+              <li>Business Communication: reporting technical problems & giving solutions.</li>
+              <li>Technology role-plays.</li>
+            </ul>
+            <p class="session-title">Session 24</p>
+            <ul>
+              <li>Unit 8 Working with Words: travel vocabulary (tickets, flights, bookings).</li>
+            </ul>
+          </div>
+
+          <!-- Week 13 -->
+          <div class="week-card">
+            <h3>Week 13 – Unit 8 (Part 2)</h3>
+            <p class="session-title">Session 25</p>
+            <ul>
+              <li>Language at Work: present simple for timetables, time expressions.</li>
+              <li>Practise reading schedules.</li>
+            </ul>
+            <p class="session-title">Session 26</p>
+            <ul>
+              <li>Business Communication: asking for/giving travel information.</li>
+              <li>Dialogue practice for booking and confirming travel.</li>
+            </ul>
+          </div>
+
+          <!-- Week 14 -->
+          <div class="week-card">
+            <h3>Week 14 – Unit 8 (Consolidation) & Viewpoint 2</h3>
+            <p class="session-title">Session 27</p>
+            <ul>
+              <li>Talking Point: travel arrangements task.</li>
+              <li>Fluency practice linking all travel language.</li>
+            </ul>
+            <p class="session-title">Session 28</p>
+            <ul>
+              <li>Viewpoint 2 – Describing Businesses video lesson.</li>
+              <li>Discussion and speaking practice.</li>
+            </ul>
+          </div>
+
+          <!-- Week 15 -->
+          <div class="week-card">
+            <h3>Week 15 – Global Review</h3>
+            <p class="session-title">Session 29</p>
+            <ul>
+              <li>Global review of Units 1–8 (vocabulary and grammar).</li>
+              <li>Practice activities from Practice Files / revision games.</li>
+            </ul>
+            <p class="session-title">Session 30</p>
+            <ul>
+              <li>Speaking test practice: role-plays, presentations, phone calls.</li>
+            </ul>
+          </div>
+
+          <!-- Week 16 -->
+          <div class="week-card">
+            <h3>Week 16 – Assessment & Feedback</h3>
+            <p class="session-title">Session 31</p>
+            <ul>
+              <li>Final review and Q&amp;A.</li>
+              <li>Individual speaking performances (short tasks).</li>
+            </ul>
+            <p class="session-title">Session 32</p>
+            <ul>
+              <li>Final Progress Test (written + short speaking assessment).</li>
+              <li>Course feedback and next steps.</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <p class="footer-note">
+          You can easily adjust session lengths or merge sessions depending on your institutional timetable.
+        </p>
+      </div>
+    </div>
+
+  </main>
+
+  <div class="footer-note">
+    Tip: You can embed this page in your LMS, share it as a link, or print it as a visual teacher guide.
+  </div>
+</div>
+
+<script>
+  // Simple accordion logic for all panels
+  (function() {
+    var accordions = document.querySelectorAll(".accordion");
+
+    accordions.forEach(function(acc) {
+      acc.addEventListener("click", function() {
+        var isActive = acc.classList.contains("active");
+        var panel = acc.nextElementSibling;
+
+        // Close all panels
+        document.querySelectorAll(".accordion").forEach(function(otherAcc) {
+          otherAcc.classList.remove("active");
+        });
+        document.querySelectorAll(".panel").forEach(function(otherPanel) {
+          otherPanel.style.maxHeight = null;
+          otherPanel.classList.remove("open");
+        });
+
+        // Toggle current panel
+        if (!isActive) {
+          acc.classList.add("active");
+          panel.classList.add("open");
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        }
+      });
+    });
+
+    // Open the first panel by default
+    if (accordions.length > 0) {
+      accordions[0].click();
+    }
+  })();
+</script>
+</body>
+</html>
